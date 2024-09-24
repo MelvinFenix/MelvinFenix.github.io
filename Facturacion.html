@@ -1,0 +1,120 @@
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+
+        <title> Facturacion </title>
+    </head>
+
+    <body>
+        <center>
+            <form>
+            <!--form action="Facturacion"-->
+                <h1> Generacion de Factura </h1>
+
+                <span> 1. Ingrese los datos de su Ticket</span>
+                <br>
+                <br>
+                
+                <label for="fechaHoraVenta"> Fecha y hora de Venta</label>
+                <br>
+                <input type="datetime-local" id="fechaHoraVenta" name="fechaHoraVenta" required>
+                <br>
+                <br>
+
+                <label for="folioVenta"> Folio de Venta </label>
+                <br>
+                <input type="text" id="folioVenta" name="folioVenta" required>
+                <br>
+                
+                <label for="TotalComp"> Total de compra </label>
+                <br>
+                <input type="text" id="TotalComp" name="TotalComp" required>
+                <br>
+                <br>
+                <br>
+
+                <span> 2. Ingrese sus datos de facturacion </span>
+                <br>
+                <br>
+
+                <label for="rfc"> RFC </label>
+                <br>
+                <input type="text" id="rfc" name="rfc" required>
+                <br>
+
+                <label for="RazonSoc"> Nombre de Razon Social </label>
+                <br>
+                <input type="text" id="RazonSoc" name="RazonSoc" required>
+                <br>
+
+                <label for="direccion"> Direccion </label>
+                <br>
+                <input type="text" id="direccion" name="direccion" required>
+                <br>
+
+                <label for="cp"> Codigo Postal </label>
+                <br>
+                <input type="text" id="cp" name="cp" required>
+                <br>
+                <br>
+
+                <label for="estado"> Estado </label>
+                <br>
+                <select name="estado" id="estado">
+                    <option value="seleccion">---Seleccione una opción---</option>
+                    <option value="Aguascalientes">Aguascalientes</option>
+                    <option value="Baja California">Baja California</option>
+                    <option value="Baja California Sur">Baja California Sur</option>
+                    <option value="Campeche">Campeche</option>
+                    <option value="Chiapas">Chiapas</option>
+                    <option value="Chihuahua">Chihuahua</option>
+                    <option value="Ciudad de México">Ciudad de México</option>
+                    <option value="Coahuila">Coahuila</option>
+                    <option value="Colima">Colima</option>
+                    <option value="Durango">Durango</option>
+                    <option value="Estado de México">Estado de México</option>
+                    <option value="Guanajuato">Guanajuato</option>
+                    <option value="Guerrero">Guerrero</option>
+                    <option value="Hidalgo">Hidalgo</option>
+                    <option value="Jalisco">Jalisco</option>
+                    <option value="Michoacán">Michoacán</option>
+                    <option value="Morelos">Morelos</option>
+                    <option value="Nayarit">Nayarit</option>
+                    <option value="Nuevo León">Nuevo León</option>
+                    <option value="Oaxaca">Oaxaca</option>
+                    <option value="Puebla">Puebla</option>
+                    <option value="Querétaro">Querétaro</option>
+                    <option value="Quintana Roo">Quintana Roo</option>
+                    <option value="San Luis Potosí">San Luis Potosí</option>
+                    <option value="Sinaloa">Sinaloa</option>
+                    <option value="Sonora">Sonora</option>
+                    <option value="Tabasco">Tabasco</option>
+                    <option value="Tamaulipas">Tamaulipas</option>
+                    <option value="Tlaxcala">Tlaxcala</option>
+                    <option value="Veracruz">Veracruz</option>
+                    <option value="Yucatán">Yucatán</option>
+                    <option value="Zacatecas">Zacatecas</option>
+                </select>
+                <br>
+                <br>
+
+                <label for="cfdi"> Uso de CFDI </label>
+                <br>
+                <select name="cfdi" id="cfdi" required> 
+                    <option value="seleccion">---Seleccione una opción---</option>
+                    <option value="adquiMerca"> Adquisicion de Mercancias </option>
+                    <option value="devol"> Devoluciones </option>
+                    <option value="trans"> Transporte </option>
+                    <option value="GasGen"> Gastos en General </option>
+                </select>
+                <br>
+                <br>
+                <br>
+
+                <input type="submit" value="Generar">
+            </form>
+
+        </center>
+    </body>
+</html>

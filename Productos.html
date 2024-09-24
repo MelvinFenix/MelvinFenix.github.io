@@ -1,0 +1,211 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title> Productos </title>
+</head>
+
+<script>
+    function addToCart(id, name, price) {
+        // Obtener el carrito actual del localStorage o inicializarlo vacío
+        const cart = JSON.parse(localStorage.getItem('cart')) || {};
+
+        // Si el producto ya está en el carrito, aumentar la cantidad
+        if (cart[id]) {
+            cart[id].quantity += 1;
+        } else {
+            // Si no está en el carrito, agregar el producto con cantidad 1
+            cart[id] = {
+                id: id,
+                name: name,
+                price: price,
+                quantity: 1
+            };
+        }
+
+        // Guardar el carrito actualizado en el localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Muestra un mensaje de confirmación o actualizar la interfaz del carrito
+        alert(`${name} ha sido añadido al carrito.`);
+    }
+</script>
+
+<body>
+    <center>
+        <!-- TRUPER -->
+        <h1> Productos TRUPER </h1>
+
+        <h3> Llave ajustable </h3>
+        <img src="Logos/t1.jpg" width="150">
+        <ul style="list-style-type: none; padding: 0;">
+            <li> Descripcion: Llave ajustable de calidad premium. </li>
+            <li> Precio: $299.00 MXN </li>
+            <button onclick="addToCart(1, 'Llave ajustable', 299.00)"> Añadir al carrito </button>
+        </ul>
+
+        <h3> Taladro inalambrico </h3>
+        <img src="Logos/t2.jpg" width="150">
+        <ul style="list-style-type: none; padding: 0;">
+            <li> Descripcion: Taladro inalambrico de alta potencia. </li>
+            <li> Precio: $1,799.00 MXN </li>
+            <button onclick="addToCart(2, 'Taladro inalámbrico', 1799.00)"> Añadir al carrito </button>
+        </ul>
+
+        <h3> Cinta metrica </h3>
+        <img src="Logos/t3.jpg" width="150">
+        <ul style="list-style-type: none; padding: 0;">
+            <li> Descripcion: Cinta metrica resistente y precisa. </li>
+            <li> Precio: $149.00 MXN </li>
+            <button onclick="addToCart(3, 'Cinta métrica', 149.00)"> Añadir al carrito </button>
+        </ul>
+
+        <h3> Martillo de garra </h3>
+        <img src="Logos/t4.jpg" width="150">
+        <ul style="list-style-type: none; padding: 0;">
+            <li> Descripcion: Martillo de garra de acero forjado. </li>
+            <li> Precio: $229.00 MXN </li>
+            <button onclick="addToCart(4, 'Martillo de garra', 229.00)"> Añadir al carrito </button>
+        </ul>
+
+        <h3> Sierra circular </h3>
+        <img src="Logos/t5.jpg" width="150">
+        <ul style="list-style-type: none; padding: 0;">
+            <li> Descripcion: Sierra circular de alta velocidad. </li>
+            <li> Precio: $999.00 MXN </li>
+            <button onclick="addToCart(5, 'Sierra circular', 999.00)"> Añadir al carrito </button>
+        </ul>
+
+        <h3> Pala de punta </h3>
+        <img src="Logos/t6.jpg" width="150">
+        <ul style="list-style-type: none; padding: 0;">
+            <li> Descripcion: Pala de punta con mango ergonomico. </li>
+            <li> Precio: $389.00 MXN </li>
+            <button onclick="addToCart(6, 'Pala de punta', 389.00)"> Añadir al carrito </button>
+        </ul>
+
+        <h3> Serrucho de carpintero </h3>
+        <img src="Logos/t7.jpg" width="150">
+        <ul style="list-style-type: none; padding: 0;">
+            <li> Descripcion: Serrucho de carpintero con hoja de acero templado. </li>
+            <li> Precio: $189.00 MXN </li>
+            <button onclick="addToCart(7, 'Serrucho de carpintero', 189.00)"> Añadir al carrito </button>
+        </ul>
+
+        <h3> Llave de tubo </h3>
+        <img src="Logos/t8.jpg" width="150">
+        <ul style="list-style-type: none; padding: 0;">
+            <li> Descripcion: Llave de tubo de alta resistencia. </li>
+            <li> Precio: $239.00 MXN </li>
+            <button onclick="addToCart(8, 'Llave de tubo', 239.00)"> Añadir al carrito </button>
+        </ul>
+
+        <h3> Destornillador Phillips </h3>
+        <img src="Logos/t9.jpg" width="150">
+        <ul style="list-style-type: none; padding: 0;">
+            <li> Descripcion: Destornillador Phillips magnetico. </li>
+            <li> Precio: $99.00 MXN </li>
+            <button onclick="addToCart(9, 'Destornillador Phillips', 99.00)"> Añadir al carrito </button>
+        </ul>
+
+        <h3> Tijeras de podar </h3>
+        <img src="Logos/t10.jpg" width="150">
+        <ul style="list-style-type: none; padding: 0;">
+            <li> Descripcion: Tijeras de podar con hojas de acero inoxidable. </li>
+            <li> Precio: $349.00 MXN </li>
+            <button onclick="addToCart(10, 'Tijeras de podar', 349.00)"> Añadir al carrito </button>
+        </ul>
+
+        <!-- CATERPILLAR -->
+        <h1> Productos CATERPILLAR </h1>
+
+        <h3> Bota de trabajo </h3>
+        <img src="Logos/c1.jpg" width="150">
+        <ul style="list-style-type: none; padding: 0;">
+            <li> Descripcion: Bota de trabajo resistente y duradera. </li>
+            <li> Precio: $899.00 MXN </li>
+            <button onclick="addToCart(11, 'Bota de trabajo', 899.00)"> Añadir al carrito </button>
+        </ul>
+
+        <h3> Guantes de trabajo </h3>
+        <img src="Logos/c2.jpg" width="150">
+        <ul style="list-style-type: none; padding: 0;">
+            <li> Descripcion: Guantes de trabajo con proteccion extra. </li>
+            <li> Precio: $159.00 MXN </li>
+            <button onclick="addToCart(12, 'Guantes de trabajo', 159.00)"> Añadir al carrito </button>
+        </ul>
+
+        <h3> Casco de seguridad </h3>
+        <img src="Logos/c3.jpg" width="150">
+        <ul style="list-style-type: none; padding: 0;">
+            <li> Descripcion: Casco de seguridad resistente a impactos. </li>
+            <li> Precio: $299.00 MXN </li>
+            <button onclick="addToCart(13, 'Casco de seguridad', 299.00)"> Añadir al carrito </button>
+        </ul>
+
+        <h3> Chaleco reflectante </h3>
+        <img src="Logos/c4.jpg" width="150">
+        <ul style="list-style-type: none; padding: 0;">
+            <li> Descripcion: Chaleco reflectante de alta visibilidad. </li>
+            <li> Precio: $129.00 MXN </li>
+            <button onclick="addToCart(14, 'Chaleco reflectante', 129.00)"> Añadir al carrito </button>
+        </ul>
+
+        <h3> Linterna LED </h3>
+        <img src="Logos/c5.jpg" width="150">
+        <ul style="list-style-type: none; padding: 0;">
+            <li> Descripcion: Linterna LED resistente al agua. </li>
+            <li> Precio: $99.00 MXN </li>
+            <button onclick="addToCart(15, 'Linterna LED', 99.00)"> Añadir al carrito </button>
+        </ul>
+
+        <!-- CEMEX -->
+        <h1> Productos CEMEX </h1>
+
+        <h3> Cemento Portland </h3>
+        <img src="Logos/ce1.jpg" width="150">
+        <ul style="list-style-type: none; padding: 0;">
+            <li> Descripcion: Cemento Portland de alta calidad. </li>
+            <li> Precio: $199.00 MXN/bolsa de 50 kg </li>
+            <button onclick="addToCart(16, 'Cemento Portland', 199.00)"> Añadir al carrito </button>
+        </ul>
+
+        <h3> Lamina de acero corrugado </h3>
+        <img src="Logos/ce2.jpg" width="150">
+        <ul style="list-style-type: none; padding: 0;">
+            <li> Descripcion: Lamina de acero corrugado para techos y estructuras. </li>
+            <li> Precio: $199.00 MXN/m^2 </li>
+            <button onclick="addToCart(17, 'Lámina de acero corrugado', 199.00)"> Añadir al carrito </button>
+        </ul>
+
+        <h3> Ladrillo de arcilla</h3>
+        <img src="Logos/ce3.jpg" width="150">
+        <ul style="list-style-type: none; padding: 0;">
+            <li> Descripcion: Ladrillo de arcilla para muros y tabiques. </li>
+            <li> Precio: $4.50 MXN/pieza </li>
+            <label for="quantity-ce3">Cantidad:</label>
+            <input type="number" id="quantity-ce3" min="1" value="1">
+            <button onclick="addToCart(18, 'Ladrillo de arcilla', 4.50)"> Añadir al carrito </button>
+        </ul>
+
+        <h3> Tubo de concreto para drenaje </h3>
+        <img src="Logos/ce4.jpg" width="150">
+        <ul style="list-style-type: none; padding: 0;">
+            <li> Descripcion: Tubo de concreto reforzado para sistemas de drenaje. </li>
+            <li> Precio: $249.00 MXN/m</li>
+            <button onclick="addToCart(19, 'Tubo de concreto para drenaje', 249.00)"> Añadir al carrito </button>
+        </ul>
+
+        <h3>Pintura acrilica para exteriores</h3>
+        <img src="Logos/ce5.jpg" width="150">
+        <ul style="list-style-type: none; padding: 0;">
+            <li> Descripcion: Pintura acrílica de larga duracion para fachadas. </li>
+            <li> Precio: $399.00 MXN/galón </li>
+            <button onclick="addToCart(20, 'Pintura acrílica para exteriores', 399.00)"> Añadir al carrito </button>
+        </ul>
+    </center>
+
+</body>
+</html>
