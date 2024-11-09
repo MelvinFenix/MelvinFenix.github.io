@@ -2,49 +2,197 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title> Principal </title>
     <style>
-        body 
-        {
+        body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f8f8f8;
+            background-image: url('Logos/ferre.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
-        header 
-        {
-            background-color: #c01c11
-;
+        header {
+            background-color: #c01c11;
             color: #fafbfd;
             padding: 1px;
             text-align: center;
         }
 
-        nav 
-        {
-            background-color: #282525;
-            padding: 20px;
+        nav {
+            background-color: #000000;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
         }
 
-        nav ul 
-        {
+        nav ul {
             list-style-type: none;
             padding: 0;
             margin: 0;
+            display: flex;
+            flex: 1;
         }
 
-        nav ul li 
-        {
-            display: inline;
+        nav ul li {
             margin-right: 10px;
         }
 
-        .content 
-        {
+        /* Esto empuja el carrito hacia la derecha */
+        nav ul li#carrito {
+            margin-left: auto;
+        }
+
+        .content {
             padding: 20px;
+        }
+
+        #chatbot-container {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            height: 400px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+        }
+
+        #chatbot-header {
+            background-color: #ff0000;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #chatbot-body {
+            padding: 10px;
+            overflow-y: auto;
+            height: calc(100% - 110px);
+        }
+
+        #chatbot-footer {
+            padding: 10px;
+            background-color: #f1f1f1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 5px 10px;
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .chat-message {
+            border-radius: 8px;
+            padding: 10px;
+            display: inline-block;
+            max-width: 80%;
+            margin-bottom: 10px;
+        }
+
+        .bot-message {
+            background-color: #f1f1f1;
+            float: left;
+        }
+
+        .user-input {
+            display: flex;
+            align-items: center;
+        }
+
+        .chat-container {
+            max-width: 600px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            background-color: #fff;
+        }
+
+        #chatbot-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #278003;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 10000;
+        }
+
+        #chatbot-close {
+            background-color: rgb(0, 0, 0);
+            font-size: 16px;
+            padding: 5px;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /*Contador de visitas*/
+        .counter {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #000000;
+            padding: 10px 20px;
+            color: white;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        footer {
+            background-color: #282525;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        footer .social-icons a {
+            color: white;
+            font-size: 30px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: #ff0000;
+            /* Cambia el color al pasar el mouse */
         }
     </style>
 </head>
@@ -65,14 +213,170 @@
             <li><a href="Contactanos.html" target="content" style="color: #fafbfd;"> Contáctanos </a></li>
             <li><a href="Acerca.html" target="content" style="color: #fafbfd;"> Acerca de nosotros </a></li>
             <li><a href="Privacidad.html" target="content" style="color: #fafbfd;"> Aviso de privacidad </a></li>
-            <li><a href="Carrito.html" target="content" style="color: #fafbfd;"> Carrito </a></li>
+            <li id="carrito"><a href="Carrito.html" target="content" style="color: #fafbfd;"> Carrito </a></li>
         </ul>
     </nav>
 
     <div class="content">
         <!-- El contenido de cada pestaña se cargara aqui -->
-
         <iframe name="content" src="Inicio.html" frameborder="0" scrolling="auto" width="100%" height="800px"></iframe>
     </div>
+
+    <!-- Contador de visitas -->
+    <div class="counter" id="visitCounter">
+        Visitas: 0
+    </div>
+
+    <!-- Boton para abrir el chatbot -->
+    <button id="chatbot-toggle" onclick="openChatbot()">💬</button>
+
+    <!-- Contenedor del chatbot -->
+    <div id="chatbot-container">
+        <div id="chatbot-header">
+            Chatbot
+
+            <!-- Boton para cerrar el chatbot -->
+            <button id="chatbot-close" onclick="closeChatbot()">X</button>
+        </div>
+        <div id="chatbot-body">
+
+            <!-- Aqui apareceran los mensajes -->
+        </div>
+        <div id="chatbot-footer">
+            <input type="text" id="user-message" placeholder="Escribe tu mensaje..." />
+            <button onclick="sendUserMessage()">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        // Contador de visitas con localStorage
+        let visitCount = localStorage.getItem('visitCount');
+        if (visitCount) {
+            visitCount = parseInt(visitCount) + 1;
+        } else {
+            visitCount = 1;
+        }
+
+        document.getElementById('visitCounter').innerText = "Visita Numero: " + visitCount;
+        localStorage.setItem('visitCount', visitCount);
+
+        // Funcion para abrir el chatbot
+        function openChatbot() {
+            document.getElementById('chatbot-container').style.display = 'block';
+            document.getElementById('chatbot-toggle').style.display = 'none'; // Ocultar el botón de abrir chatbot
+
+            // Enviar el mensaje de bienvenida del bot
+            setTimeout(() => {
+                sendMessage('Bienvenido al asistente virtual de Ferretería KAI. ¿En qué puedo ayudarte hoy?', 'bot');
+            }, 500); // Se agrega un pequeño retraso para simular la carga
+        }
+
+        // Funcion para cerrar el chatbot
+        function closeChatbot() {
+            document.getElementById('chatbot-container').style.display = 'none';
+            document.getElementById('chatbot-toggle').style.display = 'block'; // Mostrar el botón de abrir chatbot
+        }
+
+        // Funcion para mostrar los mensajes en el chatbot
+        function sendMessage(message, from = 'user') {
+            let messageContainer = document.createElement('div');
+            messageContainer.classList.add('chat-message', from);
+            messageContainer.innerText = message;
+            document.getElementById('chatbot-body').appendChild(messageContainer);
+            document.getElementById('chatbot-body').scrollTop = document.getElementById('chatbot-body').scrollHeight;
+        }
+
+        // Funcion para enviar el mensaje del usuario
+        function sendUserMessage() {
+            var userMessage = document.getElementById('user-message').value.trim();
+            if (userMessage) {
+                // Mostrar mensaje del usuario
+                sendMessage(userMessage, 'user');
+                document.getElementById('user-message').value = ''; // Limpiar el campo de entrada
+                botReply(userMessage); // Responder con el chatbot
+            }
+        }
+
+        // Respuesta del chatbot
+        function botReply(userMessage) {
+            let response = "Lo siento, no entendí tu mensaje. ¿Puedes reformular?";
+
+            // Respuestas segun la entrada del usuario
+            if (userMessage.toLowerCase().includes("hola")) {
+                response = "¡Hola! ¿En qué puedo ayudarte?";
+            } else if (userMessage.toLowerCase().includes("precio")) {
+                response = "Los precios varían según el producto. ¿Qué producto te interesa?";
+            } else if (userMessage.toLowerCase().includes("horarios")) {
+                response = "Nuestro horario de atención es de lunes a viernes de 9:00 AM a 6:00 PM.";
+            } else if (userMessage.toLowerCase().includes("gracias")) {
+                response = "¡De nada! Si tienes más preguntas, no dudes en preguntar.";
+            } else if (userMessage.toLowerCase().includes("gracias")) {
+                response = "¡De nada! Si tienes más preguntas, no dudes en preguntar.";
+            } else if (userMessage.toLowerCase().includes("envío")) {
+                response = "Realizamos envíos a toda la ciudad. Los costos dependen del peso y la distancia. ¿Te gustaría saber más?";
+            } else if (userMessage.toLowerCase().includes("dónde están ubicados")) {
+                response = "Tenemos varias sucursales. ¿Te gustaría saber la más cercana a tu ubicación?";
+            } else if (userMessage.toLowerCase().includes("tienen taladro")) {
+                response = "Sí, tenemos una variedad de taladros. ¿Te gustaría saber más sobre algún modelo en particular?";
+            } else if (userMessage.toLowerCase().includes("formas de pago")) {
+                response = "Aceptamos pagos en efectivo, tarjetas de crédito y débito. También puedes pagar a través de transferencias bancarias.";
+            } else if (userMessage.toLowerCase().includes("garantía")) {
+                response = "Todos nuestros productos tienen garantía, dependiendo del fabricante. ¿Te gustaría saber sobre la garantía de algún producto específico?";
+            } else if (userMessage.toLowerCase().includes("contacto")) {
+                response = "Puedes contactarnos por teléfono, correo electrónico o directamente a través de nuestro formulario en la página de 'Contáctanos'. ¿Te gustaría recibir más detalles?";
+            } else if (userMessage.toLowerCase().includes("ofertas")) {
+                response = "Tenemos varias ofertas disponibles. ¿Te gustaría saber más sobre nuestras promociones actuales?";
+            } else if (userMessage.toLowerCase().includes("cómo hacer una devolución")) {
+                response = "Para hacer una devolución, debes traer el producto en su estado original y con el recibo de compra. ¿Te gustaría saber más sobre nuestro proceso de devoluciones?";
+            } else if (userMessage.toLowerCase().includes("producto agotado")) {
+                response = "Si un producto está agotado, puedes registrarte para recibir una notificación cuando esté disponible nuevamente. ¿Te gustaría que te avise cuando lo tengamos en stock?";
+            } else if (userMessage.toLowerCase().includes("recomendaciones")) {
+                response = "Claro, dependiendo de lo que necesites, te puedo recomendar varias opciones. ¿Qué tipo de herramienta o producto estás buscando?";
+            } else if (userMessage.toLowerCase().includes("disponibilidad")) {
+                response = "Para saber la disponibilidad de un producto en nuestras tiendas, puedes consultarlo en nuestra página web o llamarnos directamente a nuestra sucursal.";
+            }
+
+
+            // Enviar respuesta del bot
+            setTimeout(() => {
+                sendMessage(response, 'bot');
+            }, 1000); // Simular un pequeño retraso en la respuesta
+        }
+
+        // Permitir que el usuario envie el mensaje al presionar "Enter"
+        document.getElementById('user-message').addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                sendUserMessage();
+            }
+        });
+    </script>
+
+    <!-- Sección de redes sociales -->
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/ITTLA/" target="_blank" class="fab fa-facebook">
+                <img src="Logos/face.ico" style="width:50px; height:50px; margin-right: 100px;">
+            </a>
+
+            <a href="https://twitter.com/i/flow/login?redirect_after_login=%2FTecNM_ITTLA" target="_blank"
+                class="fab fa-twitter">
+                <img src="Logos/twitter.ico" style="width:50px; height:50px; margin-right: 100px;">
+            </a>
+
+            <a href="https://www.instagram.com/tecnm_ittla/" target="_blank" class="fab fa-instagram">
+                <img src="Logos/insta.ico" style="width:50px; height:50px; margin-right: 100px;">
+            </a>
+
+            <a href="https://www.youtube.com/channel/UCm9EUK8FOfMxZ7Ey6VCBkjQ" target="_blank" class="fab fa-youtube">
+                <img src="Logos/youtube.ico" style="width:50px; height:50px; margin-right: 100px;">
+            </a>
+
+            <a href="https://www.tiktok.com/@tecnm_ittla" target="_blank" class="fab fa-tiktok">
+                <img src="Logos/tiktok.ico" style="width:50px; height:50px; margin-right: 100px;">
+            </a>
+        </div>
+    </footer>
+
 </body>
+
 </html>
